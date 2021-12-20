@@ -1,44 +1,39 @@
 #!/bin/sh
 # REQUIRES FONT-AWESOME PACKAGE TO WORK PROPERLY
 
-dte(){
+dte() {
         dte="$(date +"%a, %b %d %R")"
         echo "$dte"
 }
 
-hdd(){
+hdd() {
         hdd="$(df -h / | grep dev | awk '{print$3, " "  $5}')"
         echo "  $hdd"
 }
 
-mem(){
+mem() {
         mem="$(free -h | awk '/Mem:/ {printf $3}')"
         echo "  $mem"
 }
 
 cpu() {
-    read cpu a b c previdle rest < /proc/stat
-      prevtotal=$((a+b+c+previdle))
-        sleep 0.5
-          read cpu a b c idle rest < /proc/stat
-            total=$((a+b+c+idle))
-              cpu=$((100*( (total-prevtotal) - (idle-previdle) ) / (total-prevtotal) ))
-                echo "  $cpu% "
+    	read cpu a b c previdle rest < /proc/stat
+    	prevtotal=$((a+b+c+previdle))
+    	sleep 0.5
+    	read cpu a b c idle rest < /proc/stat
+    	total=$((a+b+c+idle))
+    	cpu=$((100*( (total-prevtotal) - (idle-previdle) ) / (total-prevtotal) ))
+    	echo "  $cpu% "
 }
 
-pkgs(){
-        pkgs="$(equery list "*" | wc -l)"
-        echo "  $pkgs"
-}
-
-vol(){
+vol() {
 	vol="$(amixer -D pulse get Master | awk -F'[][]' 'END{print $4":"$2}')"
-	echo "  $vol"
+	echo "  $vol"
 }
 
 bat() {
 	battery="$(cat /sys/class/power_supply/BAT0/capacity)"
-	echo " $battery %"
+	echo " $battery%"
 }
 
 batstat() {
@@ -46,28 +41,33 @@ batstat() {
 	echo "$bstat"
 }
 
-dwm_networkmanager () {
-    CONNAME=$(nmcli -a | grep 'Wired connection' | awk 'NR==1{print $1}')
-    if [ "$CONNAME" = "" ]; then
-	CONNAME=$(nmcli -t -f active,ssid dev wifi | grep '^yes' | cut -c 5-)
-    fi
+dwm_networkmanager() {
+	CONNAME=$(nmcli -a | grep 'Wired connection' | awk 'NR==1{print $1}')
+	if [ "$CONNAME" = "" ]; then
+    		CONNAME=$(nmcli -t -f active,ssid dev wifi | grep '^yes' | cut -c 5-)
+	fi
 
-    PRIVATE=$(nmcli -a | grep 'inet4 192' | awk '{print $2}')
-    PUBLIC=$(curl -s https://ipinfo.io/ip)
+	PRIVATE=$(nmcli -a | grep 'inet4 192' | awk '{print $2}')
+	PUBLIC=$(curl -s https://ipinfo.io/ip)
 
-    if [ "$IDENTIFIER" = "unicode" ]; then
-        export __DWM_BAR_NETWORKMANAGER__="${SEP1}🌐 ${CONNAME} ${PRIVATE} ${PUBLIC}${SEP2}"
-    else
-        echo "${SEP1} ${CONNAME} ${SEP2}"
-    fi
+	if [ "$IDENTIFIER" = "unicode" ]; then
+		export __DWM_BAR_NETWORKMANAGER__="${SEP1}🌐 ${CONNAME} ${PRIVATE} ${PUBLIC}${SEP2}"
+	else
+		echo "${SEP1} ${CONNAME} ${SEP2}"
+	fi
 }
 
 temp() {
-    awk '/temp1/ {print +$2"°C"}' <(sensors)
+    	awk '/temp1/ {print +$2"°C"}' <(sensors)
+}
+
+scrbrt() {
+	scrstat="$(light -G)"
+	echo "$scrstat"
 }
 
 status(){
-        echo "[$(cpu)$(temp)][$(mem)][$(bat) $(batstat)][$(dwm_networkmanager)][$(vol)][$(pkgs)][$(dte)]"
+        echo "[$(cpu)$(temp)][$(mem)][$(bat) $(batstat)][$(scrbrt)][$(dwm_networkmanager)][$(vol)][$(dte)]"
 }
 
 

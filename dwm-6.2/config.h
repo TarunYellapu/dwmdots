@@ -75,6 +75,8 @@ static const char *mutecmd[] = { "amixer", "-q", "set", "Master", "toggle", NULL
 static const char *volupcmd[] = { "amixer", "-q", "set", "Master", "5%+", "unmute", NULL };
 static const char *voldowncmd[] = { "amixer", "-q", "set", "Master", "5%-", "unmute", NULL };
 static const char *miccmd[] = { "amixer", "set", "Capture", "toggle", NULL };
+static const char *briup[] = { "light", "-A", "5", NULL };
+static const char *bridown[] = { "light", "-U", "5", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -84,6 +86,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_m, 	   spawn,	   {.v = mutecmd } },
 	{ MODKEY|ShiftMask,		XK_l, 	   spawn,	   {.v = voldowncmd } },
 	{ MODKEY|ShiftMask,		XK_r,      spawn,	   {.v = volupcmd } },
+	{ MODKEY|ControlMask,		XK_r,	   spawn,	   {.v = briup } },
+	{ MODKEY|ControlMask,		XK_l,	   spawn,	   {.v = bridown } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
