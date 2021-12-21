@@ -36,11 +36,6 @@ bat() {
 	echo " $battery%"
 }
 
-batstat() {
-	bstat="$(cat /sys/class/power_supply/BAT0/status)"
-	echo "$bstat"
-}
-
 dwm_networkmanager() {
 	CONNAME=$(nmcli -a | grep 'Wired connection' | awk 'NR==1{print $1}')
 	if [ "$CONNAME" = "" ]; then
@@ -67,7 +62,7 @@ scrbrt() {
 }
 
 status(){
-        echo "[$(cpu)$(temp)][$(mem)][$(bat) $(batstat)][$(scrbrt)][$(dwm_networkmanager)][$(vol)][$(dte)]"
+        echo "[$(cpu)$(temp)][$(mem)][$(bat)][$(scrbrt)][$(dwm_networkmanager)][$(vol)][$(dte)]"
 }
 
 
