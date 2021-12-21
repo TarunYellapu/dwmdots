@@ -31,7 +31,7 @@ static const unsigned int alphas[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
+static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -74,9 +74,9 @@ static const char *web[] = { "google-chrome-stable", NULL };
 static const char *mutecmd[] = { "amixer", "-q", "set", "Master", "toggle", NULL };
 static const char *volupcmd[] = { "amixer", "-q", "set", "Master", "5%+", "unmute", NULL };
 static const char *voldowncmd[] = { "amixer", "-q", "set", "Master", "5%-", "unmute", NULL };
-static const char *miccmd[] = { "amixer", "set", "Capture", "toggle", NULL };
 static const char *briup[] = { "light", "-A", "5", NULL };
 static const char *bridown[] = { "light", "-U", "5", NULL };
+static const char *screenshot[] = { "scrot", "/home/tarun/Pictures/Screenshots/%Y-%m-%d-%T-screenshot.jpg", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -88,6 +88,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_r,      spawn,	   {.v = volupcmd } },
 	{ MODKEY|ControlMask,		XK_r,	   spawn,	   {.v = briup } },
 	{ MODKEY|ControlMask,		XK_l,	   spawn,	   {.v = bridown } },
+	{ 0,                            XK_Print,  spawn,          {.v = screenshot } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
