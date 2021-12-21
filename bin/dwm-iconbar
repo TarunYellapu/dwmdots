@@ -2,18 +2,18 @@
 # REQUIRES FONT-AWESOME PACKAGE TO WORK PROPERLY
 
 dte() {
-        dte="$(date +"%a, %b %d %R")"
-        echo "$dte"
+        dte="$(date +"%a, %b %d")"
+        echo " $dte"
 }
 
-hdd() {
-        hdd="$(df -h / | grep dev | awk '{print$3, " "  $5}')"
-        echo "  $hdd"
+tim() {
+	tim="$(date +"%R")"
+	echo " $tim"
 }
 
 mem() {
         mem="$(free -h | awk '/Mem:/ {printf $3}')"
-        echo "  $mem"
+        echo " $mem"
 }
 
 cpu() {
@@ -23,12 +23,12 @@ cpu() {
     	read cpu a b c idle rest < /proc/stat
     	total=$((a+b+c+idle))
     	cpu=$((100*( (total-prevtotal) - (idle-previdle) ) / (total-prevtotal) ))
-    	echo "  $cpu% "
+    	echo " $cpu% "
 }
 
 vol() {
 	vol="$(amixer -D pulse get Master | awk -F'[][]' 'END{print $4":"$2}')"
-	echo "  $vol"
+	echo " $vol"
 }
 
 bat() {
@@ -58,11 +58,11 @@ temp() {
 
 scrbrt() {
 	scrstat="$(light -G)"
-	echo "$scrstat"
+	echo " $scrstat"
 }
 
 status(){
-        echo "[$(cpu)$(temp)][$(mem)][$(bat)][$(scrbrt)][$(dwm_networkmanager)][$(vol)][$(dte)]"
+        echo "[$(cpu)$(temp)|$(mem)|$(bat)|$(scrbrt)|$(dwm_networkmanager)|$(vol)|$(dte)|$(tim)]"
 }
 
 
