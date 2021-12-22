@@ -77,6 +77,8 @@ static const char *voldowncmd[] = { "amixer", "-q", "set", "Master", "5%-", "unm
 static const char *briup[] = { "light", "-A", "5", NULL };
 static const char *bridown[] = { "light", "-U", "5", NULL };
 static const char *screenshot[] = { "scrot", "/home/tarun/Pictures/Screenshots/%Y-%m-%d-%T-screenshot.jpg", NULL };
+static const char *shutdown[] = { "sudo", "shutdown", "-h", "now", NULL };
+static const char *reboot[] = { "sudo", "reboot", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -88,6 +90,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_r,      spawn,	   {.v = volupcmd } },
 	{ MODKEY|ControlMask,		XK_r,	   spawn,	   {.v = briup } },
 	{ MODKEY|ControlMask,		XK_l,	   spawn,	   {.v = bridown } },
+	{ MODKEY,			XK_F4,	   spawn,	   {.v = shutdown } },
+	{ MODKEY,			XK_F5,	   spawn,	   {.v = reboot } },
 	{ 0,                            XK_Print,  spawn,          {.v = screenshot } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
