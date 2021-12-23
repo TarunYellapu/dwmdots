@@ -23,7 +23,7 @@ cpu() {
     	read cpu a b c idle rest < /proc/stat
     	total=$((a+b+c+idle))
     	cpu=$((100*( (total-prevtotal) - (idle-previdle) ) / (total-prevtotal) ))
-    	echo " $cpu% "
+    	echo " $cpu% "
 }
 
 vol() {
@@ -58,7 +58,7 @@ temp() {
 
 scrbrt() {
 	scrstat="$(light -G)"
-	echo " $scrstat"
+	echo " $scrstat"
 }
 
 status(){
