@@ -2,8 +2,8 @@
 # REQUIRES FONT-AWESOME PACKAGE TO WORK PROPERLY
 
 dte() {
-        dte="$(date +"%a, %b %d")"
-        echo " $dte"
+  dte="$(date +"%b %d %a")"
+  echo " $dte"
 }
 
 tim() {
@@ -12,18 +12,18 @@ tim() {
 }
 
 mem() {
-        mem="$(free -h | awk '/Mem:/ {printf $3}')"
-        echo " $mem"
+  mem="$(free -h | awk '/Mem:/ {printf $3}')"
+  echo " $mem"
 }
 
 cpu() {
-    	read cpu a b c previdle rest < /proc/stat
-    	prevtotal=$((a+b+c+previdle))
-    	sleep 0.5
-    	read cpu a b c idle rest < /proc/stat
-    	total=$((a+b+c+idle))
-    	cpu=$((100*( (total-prevtotal) - (idle-previdle) ) / (total-prevtotal) ))
-    	echo " $cpu% "
+  read cpu a b c previdle rest < /proc/stat
+  prevtotal=$((a+b+c+previdle))
+  sleep 0.5
+  read cpu a b c idle rest < /proc/stat
+  total=$((a+b+c+idle))
+  cpu=$((100*( (total-prevtotal) - (idle-previdle) ) / (total-prevtotal) ))
+  echo " $cpu% "
 }
 
 vol() {
@@ -39,7 +39,7 @@ bat() {
 dwm_networkmanager() {
 	CONNAME=$(nmcli -a | grep 'Wired connection' | awk 'NR==1{print $1}')
 	if [ "$CONNAME" = "" ]; then
-    		CONNAME=$(nmcli -t -f active,ssid dev wifi | grep '^yes' | cut -c 5-)
+    CONNAME=$(nmcli -t -f active,ssid dev wifi | grep '^yes' | cut -c 5-)
 	fi
 
 	PRIVATE=$(nmcli -a | grep 'inet4 192' | awk '{print $2}')
@@ -53,7 +53,7 @@ dwm_networkmanager() {
 }
 
 temp() {
-    	awk '/temp1/ {print +$2"°C"}' <(sensors)
+  awk '/temp1/ {print +$2"°C"}' <(sensors)
 }
 
 scrbrt() {
@@ -62,7 +62,7 @@ scrbrt() {
 }
 
 status(){
-        echo "[$(cpu)$(temp)|$(mem)|$(bat)|$(scrbrt)|$(dwm_networkmanager)|$(vol)|$(dte)|$(tim)]"
+  echo "[$(cpu)$(temp)|$(mem)|$(bat)|$(scrbrt)|$(dwm_networkmanager)|$(vol)|$(dte)|$(tim)]"
 }
 
 
