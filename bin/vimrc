@@ -1,0 +1,81 @@
+syntax on
+set autoindent
+set smartindent
+set number
+set mouse=a
+set nocompatible
+set nolist
+set rnu
+filetype on
+filetype plugin indent on
+set modelines=0
+set wrap
+set textwidth=79
+set formatoptions=tcqrn1
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set expandtab
+set noshiftround
+set scrolloff=5
+set backspace=indent,eol,start
+set ttyfast
+set laststatus=2
+set showmode
+set showcmd
+set matchpairs+=<:>
+set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ [BUFFER=%n]\ %{strftime('%c')}
+set encoding=utf-8
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+set viminfo='100,<9999,s100
+set bg=dark
+call plug#begin('~/.vim/plugged')
+
+"Syntax highlighting and autocompletion
+Plug 'jiangmiao/auto-pairs'
+Plug 'alvan/vim-closetag'
+
+"File search and navigation
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'preservim/nerdtree'
+
+"Editor interface and theming
+Plug 'morhetz/gruvbox'
+Plug 'vim-airline/vim-airline'
+Plug 'ryanoasis/vim-devicons'
+Plug 'yggdroot/indentline'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+call plug#end()
+
+let g:airline_powerline_fonts = 1
+let g:coc_global_extensions = [ 'coc-tsserver' ]
+autocmd VimEnter * NERDTree | wincmd p
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+colorscheme gruvbox
+set bg=dark
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+vnoremap J :m '>+1<CR>gv=gv
+nnoremap K :m .-2<CR>==
+nnoremap J :m .+1<CR>==
+vnoremap K :m '<-2<CR>gv=gv
+:imap ii <Esc>
+nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
+vnoremap <Space> zf
+autocmd BufWinLeave *.* mkview
+autocmd BufWinEnter *.* silent loadview
+let mapleader = ","
+noremap <leader>w :w<cr>
+noremap <leader>gs :CocSearch
+noremap <leader>fs :Files<cr>
+noremap <leader><cr> <cr><c-w>h:q<cr>
+nnoremap <F2> :set invpaste paste?<CR>
+imap <F2> <C-O>:set invpaste paste?<CR>
+set pastetoggle=<F2>
+map <F5> :NERDTreeToggle<CR>
