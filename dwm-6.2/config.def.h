@@ -32,7 +32,7 @@ static const unsigned int alphas[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "", "", "", "", "", "", "", "", "ﮊ" };
+static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -40,12 +40,13 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class           instance     title       tags mask     isfloating   monitor */
-	{ "Eclipse",         NULL,       NULL,       1 << 2,       0,           -1 },
-	{ "Firefox",         NULL,       NULL,       1 << 1,       0,           -1 },
-  { "Google-chrome",   NULL,       NULL,       1 << 1,       0,           -1 },
-  { "mpv",             NULL,       NULL,       1 << 5,       0,           -1 },
-  { "Code",            NULL,       NULL,       1 << 2,       0,           -1 },
-  { "qBittorrent",     NULL,       NULL,       1 << 8,       0,           -1 }
+	{ "Eclipse",         NULL,       NULL,       1 << 3,       0,           -1 },
+	{ "Firefox",         NULL,       NULL,       1 << 2,       0,           -1 },
+  { "Google-chrome",   NULL,       NULL,       1 << 2,       0,           -1 },
+  { "mpv",             NULL,       NULL,       1 << 6,       0,           -1 },
+  { "Code",            NULL,       NULL,       1 << 3,       0,           -1 },
+  { "qBittorrent",     NULL,       NULL,       1 << 9,       0,           -1 },
+  { "st-256color",     NULL,       NULL,       1 << 1,       0,           -1 }
 };
 
 /* layout(s) */
@@ -55,9 +56,9 @@ static const int resizehints = 1;    /* 1 means respect size hints in tiled resi
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[]=",      tile },    /* first entry is default */
-	{ "><>",      NULL },    /* no layout function means floating behavior */
-	{ "[M]",      monocle },
+	{ "T",      tile },    /* first entry is default */
+	{ "F",      NULL },    /* no layout function means floating behavior */
+	{ "M",      monocle },
 };
 
 /* key definitions */
@@ -75,7 +76,7 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
-static const char *web[] = { "google-chrome-stable", NULL };
+static const char *web[] = { "firefox", NULL };
 static const char *mutecmd[] = { "amixer", "-q", "set", "Master", "toggle", NULL };
 static const char *volupcmd[] = { "amixer", "-q", "set", "Master", "5%+", "unmute", NULL };
 static const char *voldowncmd[] = { "amixer", "-q", "set", "Master", "5%-", "unmute", NULL };
