@@ -1,8 +1,8 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
-static const unsigned int gappx     = 5;        /* gaps between windows */
+static const unsigned int borderpx  = 2;        /* border pixel of windows */
+static const unsigned int gappx     = 3;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
@@ -47,6 +47,7 @@ static const Rule rules[] = {
   { "Code",            NULL,       NULL,       1 << 2,       0,           -1 },
   { "qBittorrent",     NULL,       NULL,       1 << 8,       0,           -1 },
   { "st-256color",     NULL,       NULL,       1 << 0,       0,           -1 },
+  { "Alacritty",       NULL,       NULL,       1 << 0,       0,           -1 },
   { "rg-tlauncher-tlauncher-rmo-TLauncher",   NULL,   NULL,   1 << 3,   0,    -1 }
 };
 
@@ -77,7 +78,7 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 /*static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };*/
 static const char *dmenu[] = { "dmenu_run", "-l", "10", NULL };
-static const char *termcmd[]  = { "st", NULL };
+static const char *termcmd[]  = { "alacritty", NULL };
 static const char *web[] = { "firefox", NULL };
 static const char *mutecmd[] = { "amixer", "-q", "set", "Master", "toggle", NULL };
 static const char *volupcmd[] = { "amixer", "-q", "set", "Master", "5%+", "unmute", NULL };
