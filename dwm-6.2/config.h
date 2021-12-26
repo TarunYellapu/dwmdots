@@ -32,7 +32,7 @@ static const unsigned int alphas[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
+static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -40,13 +40,14 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class           instance     title       tags mask     isfloating   monitor */
-	{ "Eclipse",         NULL,       NULL,       1 << 3,       0,           -1 },
-	{ "Firefox",         NULL,       NULL,       1 << 2,       0,           -1 },
-  { "Google-chrome",   NULL,       NULL,       1 << 2,       0,           -1 },
-  { "mpv",             NULL,       NULL,       1 << 6,       0,           -1 },
-  { "Code",            NULL,       NULL,       1 << 3,       0,           -1 },
-  { "qBittorrent",     NULL,       NULL,       1 << 9,       0,           -1 },
-  { "st-256color",     NULL,       NULL,       1 << 1,       0,           -1 }
+	{ "Eclipse",         NULL,       NULL,       1 << 2,       0,           -1 },
+	{ "Firefox",         NULL,       NULL,       1 << 1,       0,           -1 },
+  { "Google-chrome",   NULL,       NULL,       1 << 1,       0,           -1 },
+  { "mpv",             NULL,       NULL,       1 << 5,       0,           -1 },
+  { "Code",            NULL,       NULL,       1 << 2,       0,           -1 },
+  { "qBittorrent",     NULL,       NULL,       1 << 8,       0,           -1 },
+  { "st-256color",     NULL,       NULL,       1 << 0,       0,           -1 },
+  { "rg-tlauncher-tlauncher-rmo-TLauncher",   NULL,   NULL,   1 << 3,   0,    -1 }
 };
 
 /* layout(s) */
