@@ -14,7 +14,7 @@ static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#005577";
 static const char col_yellow[]	    = "#ffff00";
-static const char col_green[]       = "#98971a";
+static const char col_green[]       = "#ebdbb2";
 static const char col_red[]	        = "#ff0000";
 static const char col_white[]	      = "#ffffff";
 static const char col_black[]	      = "#000000";
@@ -43,11 +43,11 @@ static const Rule rules[] = {
 	{ "Eclipse",         NULL,       NULL,       1 << 2,       0,           -1 },
 	{ "Firefox",         NULL,       NULL,       1 << 1,       0,           -1 },
   { "Google-chrome",   NULL,       NULL,       1 << 1,       0,           -1 },
+  { "vlc",             NULL,       NULL,       1 << 5,       0,           -1 },
   { "mpv",             NULL,       NULL,       1 << 5,       0,           -1 },
   { "Code",            NULL,       NULL,       1 << 2,       0,           -1 },
   { "qBittorrent",     NULL,       NULL,       1 << 8,       0,           -1 },
   { "st-256color",     NULL,       NULL,       1 << 0,       0,           -1 },
-  { "Alacritty",       NULL,       NULL,       1 << 0,       0,           -1 },
   { "rg-tlauncher-tlauncher-rmo-TLauncher",   NULL,   NULL,   1 << 3,   0,    -1 }
 };
 

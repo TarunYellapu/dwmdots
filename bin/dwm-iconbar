@@ -33,7 +33,26 @@ vol() {
 
 bat() {
 	battery="$(cat /sys/class/power_supply/BAT0/capacity)"
-	echo " $battery%"
+  if [[ $battery -gt 76 ]]; then
+	  echo " $battery%"
+  elif [[ $battery -gt 50 && $battery -le 75 ]]; then
+    echo " $battery%"
+  elif [[ $battery -gt 25 && $battery -le 50 ]]; then
+    echo " $battery%"
+  elif [[ $battery -gt 5 && $battery -le 25 ]]; then
+    echo " $battery%"
+  else
+    echo " $battery%"
+  fi
+}
+
+batstat() {
+  status="$(cat /sys/class/power_supply/BAT0/status)"
+  if [ $status == Charging ]; then 
+    echo " "
+  else
+    echo ""
+  fi
 }
 
 dwm_networkmanager() {
@@ -66,7 +85,7 @@ icon() {
 }
 
 status(){
-  echo "$(icon) [$(cpu)$(temp)|$(mem)|$(bat)|$(scrbrt)|$(dwm_networkmanager)|$(vol)|$(dte)|$(tim)]"
+  echo "$(icon) [$(cpu)$(temp)|$(mem)|$(batstat)$(bat)|$(scrbrt)|$(dwm_networkmanager)|$(vol)|$(dte)|$(tim)]"
 }
 
 
