@@ -33,7 +33,7 @@ vol() {
 
 bat() {
 	battery="$(cat /sys/class/power_supply/BAT0/capacity)"
-  if [[ $battery -gt 76 ]]; then
+  if [[ $battery -gt 75 ]]; then
 	  echo " $battery%"
   elif [[ $battery -gt 50 && $battery -le 75 ]]; then
     echo " $battery%"
@@ -48,7 +48,7 @@ bat() {
 
 batstat() {
   status="$(cat /sys/class/power_supply/BAT0/status)"
-  if [ $status == Charging ]; then 
+  if [[ $status == Charging || $status == Full ]]; then 
     echo " "
   else
     echo ""
