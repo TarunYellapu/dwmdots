@@ -4,10 +4,10 @@
 static const unsigned int borderpx  = 0;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int cornerrad = 4;
-static const unsigned int gappih    = 15;
-static const unsigned int gappiv    = 15;
-static const unsigned int gappoh    = 15;
-static const unsigned int gappov    = 15;
+static const unsigned int gappih    = 10;
+static const unsigned int gappiv    = 10;
+static const unsigned int gappoh    = 10;
+static const unsigned int gappov    = 10;
 static const int smartgaps          = 1;
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
@@ -122,7 +122,7 @@ static Key keys[] = {
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
     // gaps
-    { MODKEY|ShiftMask,             XK_g,      togglegaps,     {0} },
+  { MODKEY|ShiftMask,             XK_g,      togglegaps,     {0} },
 };
 
 /* button definitions */
