@@ -11,8 +11,8 @@ static const unsigned int gappov    = 10;
 static const int smartgaps          = 1;
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "FiraCode Nerd Font:size=10:antialias=true:autohint=true" };
-static const char dmenufont[]       = "FiraCode Nerd Font:size=10:antialias=true:autohint=true";
+static const char *fonts[]          = { "Ubuntu Mono:size=12:antialias=true:autohint=true" };
+static const char dmenufont[]       = "Ubuntu Mono:size=12:antialias=true:autohint=true";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
